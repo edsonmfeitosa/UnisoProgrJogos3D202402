@@ -29,39 +29,39 @@ public class movBolinhaController : MonoBehaviour
     void Update()
     {
         #region 1ª forma de input
-        //x = Input.GetAxis("Horizontal");
-        //z = Input.GetAxis("Vertical");
-        //entrada = new Vector3(x, 0, z);
-        #endregion
-
-        #region 2ª forma de input
-        x = 0;
-        z = 0;
-        if (Input.GetKey(paraFrente))
-        {
-            z = 1;
-        }
-        if (Input.GetKey(paraTraz))
-        {
-            z = -1;
-        }
-        if (Input.GetKey(paraDireita))
-        {
-            x = 1;
-        }
-        if (Input.GetKey(paraEsquerda))
-        {
-            x = -1;
-        }
+        x = Input.GetAxis("Horizontal");
+        z = Input.GetAxis("Vertical");
         entrada = new Vector3(x, 0, z);
         #endregion
 
+        #region 2ª forma de input
+        //x = 0;
+        //z = 0;
+        //if (Input.GetKey(paraFrente))
+        //{
+        //    z = 1;
+        //}
+        //if (Input.GetKey(paraTraz))
+        //{
+        //    z = -1;
+        //}
+        //if (Input.GetKey(paraDireita))
+        //{
+        //    x = 1;
+        //}
+        //if (Input.GetKey(paraEsquerda))
+        //{
+        //    x = -1;
+        //}
+        //entrada = new Vector3(x, 0, z);
+        #endregion
+
         #region 1ª forma de movimentação da bolinha
-        transform.Translate(entrada * Time.deltaTime * velocidade);
+        //transform.Translate(entrada * Time.deltaTime * velocidade);
         #endregion
 
         #region 2ª forma de movimentação da bolinha
-        //forca.AddForce(entrada * velocidade);
+        forca.AddForce(entrada * velocidade);
         #endregion
 
         #region 3ª forma de movimentação da bolinha
