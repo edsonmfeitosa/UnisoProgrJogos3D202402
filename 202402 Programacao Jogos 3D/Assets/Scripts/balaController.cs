@@ -9,7 +9,7 @@ public class balaController : MonoBehaviour
     void Start()
     {
         forca = GetComponent<Rigidbody>();
-        forca.AddForce(Vector3.forward * velocidade, ForceMode.Impulse);
+        forca.AddForce(transform.forward * velocidade, ForceMode.Impulse);
     }
 
     void Update()
