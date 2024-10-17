@@ -16,7 +16,7 @@ public class aviaoController : MonoBehaviour
     [SerializeField] private KeyCode paraEsquerda;
     [SerializeField] private KeyCode paraDireita;
     private float velocidadeAviao = 0;
-    [SerializeField] private bool estaLigado = false;
+    [SerializeField] public bool estaLigado = false;
     void Start()
     {
         
