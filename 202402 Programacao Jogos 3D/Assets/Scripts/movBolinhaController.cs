@@ -8,6 +8,7 @@ public class movBolinhaController : MonoBehaviour
     private float x;
     private float z;
     public Vector3 entrada;
+    private Vector3 posicaoInicial;
     [Header("Inputs")]
     [SerializeField] private float velocidade;
     [Tooltip("Tecla para frente")]
@@ -16,6 +17,11 @@ public class movBolinhaController : MonoBehaviour
     [SerializeField] private KeyCode paraEsquerda;
     [SerializeField] private KeyCode paraDireita;
     [SerializeField] private KeyCode pulo;
+    [Header("Configuração de Sons")]
+    private AudioSource audio;
+    [SerializeField] private AudioClip somPulo;
+    [SerializeField] private AudioClip somMorte;
+    [SerializeField] private AudioClip somItem;
 
     private Rigidbody forca;
     [SerializeField] private float velocidadePulo;
@@ -23,6 +29,8 @@ public class movBolinhaController : MonoBehaviour
     void Start()
     {
         forca = GetComponent<Rigidbody>();
+        posicaoInicial = transform.position;
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -72,6 +80,20 @@ public class movBolinhaController : MonoBehaviour
         if(Input.GetKeyDown(pulo) && podePular)
         {
             forca.AddForce(new Vector3(0, 1, 0) * velocidadePulo, ForceMode.Impulse);
+            if(!audio.isPlaying) 
+            { 
+                audio.clip = somPulo;
+                audio.Play();
+            }
+        }
+
+        if (transform.position.y < -10)
+        {
+            audio.PlayOneShot(somMorte);
+            //audio.clip = somMorte;
+            //audio.Play();
+            transform.position = posicaoInicial;
+            
         }
 
     }
